@@ -20,9 +20,22 @@ and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/Riot>.
 
 ## Starting Application
-Please put your x_riot_token, platform, and summoner name in the config.exs file
-  config/config.exs
+Small project to demonstrate elixir use.
 
-Running the application will automatically start up an instance with the config params
+1) The application will taking a username and platform defined in the config.exs file
+2) Retrieve the API information from Riot about the player
+3) Find the last two matches played
+4) Get the participants from those matches
+  a) Will be printed to IO as:
+    > [player1, player2, ...etc]
+5) Monitor all players for new matches completed every 60 seconds
+  a) Completed matches will print as:
+    > Summoner "player name" completed match "match id"
+6) Processes will shutdown after an hour
 
-Additional summoners can be observed by running the start_application function in the application.ex file in IEx
+You will need to get an x_riot_token key from riot here: https://developer.riotgames.com/
+
+API endpoints used:
+  https://developer.riotgames.com/apis#match-v5/GET_getMatchIdsByPUUID
+  https://developer.riotgames.com/apis#match-v5/GET_getMatch
+  https://developer.riotgames.com/apis#summoner-v4/GET_getBySummonerName
